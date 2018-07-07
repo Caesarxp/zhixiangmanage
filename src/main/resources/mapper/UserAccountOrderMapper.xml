@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.UserAccountOrderMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.UserAccountOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_seq_id" jdbcType="VARCHAR" property="orderSeqId" />
+    <result column="order_type" jdbcType="TINYINT" property="orderType" />
+    <result column="total_price" jdbcType="INTEGER" property="totalPrice" />
+    <result column="pay_price" jdbcType="INTEGER" property="payPrice" />
+    <result column="pay_status" jdbcType="TINYINT" property="payStatus" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+    <result column="pay_success_time" jdbcType="TIMESTAMP" property="paySuccessTime" />
+    <result column="pay_cancel_time" jdbcType="TIMESTAMP" property="payCancelTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, order_seq_id, order_type, total_price, pay_price, pay_status, description, 
+    complete_time, pay_success_time, pay_cancel_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_account_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_account_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.UserAccountOrder">
+    insert into user_account_order (id, user_id, order_seq_id, 
+      order_type, total_price, pay_price, 
+      pay_status, description, complete_time, 
+      pay_success_time, pay_cancel_time, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{orderSeqId,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=TINYINT}, #{totalPrice,jdbcType=INTEGER}, #{payPrice,jdbcType=INTEGER}, 
+      #{payStatus,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{completeTime,jdbcType=TIMESTAMP}, 
+      #{paySuccessTime,jdbcType=TIMESTAMP}, #{payCancelTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.UserAccountOrder">
+    insert into user_account_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderSeqId != null">
+        order_seq_id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="payPrice != null">
+        pay_price,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="completeTime != null">
+        complete_time,
+      </if>
+      <if test="paySuccessTime != null">
+        pay_success_time,
+      </if>
+      <if test="payCancelTime != null">
+        pay_cancel_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSeqId != null">
+        #{orderSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null">
+        #{payPrice,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paySuccessTime != null">
+        #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payCancelTime != null">
+        #{payCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.UserAccountOrder">
+    update user_account_order
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSeqId != null">
+        order_seq_id = #{orderSeqId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=TINYINT},
+      </if>
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=INTEGER},
+      </if>
+      <if test="payPrice != null">
+        pay_price = #{payPrice,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="completeTime != null">
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paySuccessTime != null">
+        pay_success_time = #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payCancelTime != null">
+        pay_cancel_time = #{payCancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.UserAccountOrder">
+    update user_account_order
+    set user_id = #{userId,jdbcType=INTEGER},
+      order_seq_id = #{orderSeqId,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=TINYINT},
+      total_price = #{totalPrice,jdbcType=INTEGER},
+      pay_price = #{payPrice,jdbcType=INTEGER},
+      pay_status = #{payStatus,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      pay_success_time = #{paySuccessTime,jdbcType=TIMESTAMP},
+      pay_cancel_time = #{payCancelTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

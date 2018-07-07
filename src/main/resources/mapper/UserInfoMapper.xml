@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.UserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="wechat_id" jdbcType="VARCHAR" property="wechatId" />
+    <result column="wechat_session_key" jdbcType="VARCHAR" property="wechatSessionKey" />
+    <result column="union_id" jdbcType="VARCHAR" property="unionId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="user_logo" jdbcType="VARCHAR" property="userLogo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, mobile, wechat_id, wechat_session_key, union_id, email, create_time, 
+    update_time, age, user_logo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.UserInfo">
+    insert into user_info (id, user_name, mobile, 
+      wechat_id, wechat_session_key, union_id, 
+      email, create_time, update_time, 
+      age, user_logo)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{wechatId,jdbcType=VARCHAR}, #{wechatSessionKey,jdbcType=VARCHAR}, #{unionId,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=TINYINT}, #{userLogo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.UserInfo">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="wechatId != null">
+        wechat_id,
+      </if>
+      <if test="wechatSessionKey != null">
+        wechat_session_key,
+      </if>
+      <if test="unionId != null">
+        union_id,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="userLogo != null">
+        user_logo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null">
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatSessionKey != null">
+        #{wechatSessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="unionId != null">
+        #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="userLogo != null">
+        #{userLogo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.UserInfo">
+    update user_info
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null">
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatSessionKey != null">
+        wechat_session_key = #{wechatSessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="unionId != null">
+        union_id = #{unionId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="userLogo != null">
+        user_logo = #{userLogo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.UserInfo">
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      wechat_id = #{wechatId,jdbcType=VARCHAR},
+      wechat_session_key = #{wechatSessionKey,jdbcType=VARCHAR},
+      union_id = #{unionId,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      age = #{age,jdbcType=TINYINT},
+      user_logo = #{userLogo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

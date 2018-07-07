@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: default
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/zhixiang?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    maxActive: 20
+    initialSize: 3
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    filters: stat
+  application:
+    name: zhixiangmanage
+#  redis:
+#    host: 192.168.2.40
+#    port: 6379
+#    timeout: 10000
+#    pool:
+#      max-idle: 0
+#      min-idle: 200
+#      max-active: 200
+#      max-wait: -1
+  http:
+#    enabled: true
+#    max-file-size: 500MB
+#    max-request-size: 500MB
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 800MB
+
+server:
+  port: 8080
+#  context-path: /IMPlatform
+
+mybatis:
+  mapperLocations: classpath*:mapper/*Mapper.xml
+  typeAliasesPackage: com.zhixiang.zhixiangmanage.mapper
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: false
+  offsetAsPageNum: false
+
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/zhixiang?characterEncoding=utf8&useSSL=false
+    username: root
+    password: mysql
+

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.UserBalanceHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.UserBalanceHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="request_no" jdbcType="VARCHAR" property="requestNo" />
+    <result column="balance_id" jdbcType="INTEGER" property="balanceId" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="fee" jdbcType="INTEGER" property="fee" />
+    <result column="balance" jdbcType="INTEGER" property="balance" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="fund_direction" jdbcType="TINYINT" property="fundDirection" />
+    <result column="allow_sett" jdbcType="TINYINT" property="allowSett" />
+    <result column="complete_sett" jdbcType="TINYINT" property="completeSett" />
+    <result column="trx_type" jdbcType="TINYINT" property="trxType" />
+    <result column="risk_time" jdbcType="INTEGER" property="riskTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, request_no, balance_id, amount, fee, balance, remark, fund_direction, allow_sett, 
+    complete_sett, trx_type, risk_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_balance_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_balance_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.UserBalanceHistory">
+    insert into user_balance_history (id, request_no, balance_id, 
+      amount, fee, balance, 
+      remark, fund_direction, allow_sett, 
+      complete_sett, trx_type, risk_time, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{requestNo,jdbcType=VARCHAR}, #{balanceId,jdbcType=INTEGER}, 
+      #{amount,jdbcType=INTEGER}, #{fee,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{fundDirection,jdbcType=TINYINT}, #{allowSett,jdbcType=TINYINT}, 
+      #{completeSett,jdbcType=TINYINT}, #{trxType,jdbcType=TINYINT}, #{riskTime,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.UserBalanceHistory">
+    insert into user_balance_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="requestNo != null">
+        request_no,
+      </if>
+      <if test="balanceId != null">
+        balance_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="fundDirection != null">
+        fund_direction,
+      </if>
+      <if test="allowSett != null">
+        allow_sett,
+      </if>
+      <if test="completeSett != null">
+        complete_sett,
+      </if>
+      <if test="trxType != null">
+        trx_type,
+      </if>
+      <if test="riskTime != null">
+        risk_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="requestNo != null">
+        #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceId != null">
+        #{balanceId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fundDirection != null">
+        #{fundDirection,jdbcType=TINYINT},
+      </if>
+      <if test="allowSett != null">
+        #{allowSett,jdbcType=TINYINT},
+      </if>
+      <if test="completeSett != null">
+        #{completeSett,jdbcType=TINYINT},
+      </if>
+      <if test="trxType != null">
+        #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="riskTime != null">
+        #{riskTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.UserBalanceHistory">
+    update user_balance_history
+    <set>
+      <if test="requestNo != null">
+        request_no = #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceId != null">
+        balance_id = #{balanceId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fundDirection != null">
+        fund_direction = #{fundDirection,jdbcType=TINYINT},
+      </if>
+      <if test="allowSett != null">
+        allow_sett = #{allowSett,jdbcType=TINYINT},
+      </if>
+      <if test="completeSett != null">
+        complete_sett = #{completeSett,jdbcType=TINYINT},
+      </if>
+      <if test="trxType != null">
+        trx_type = #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="riskTime != null">
+        risk_time = #{riskTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.UserBalanceHistory">
+    update user_balance_history
+    set request_no = #{requestNo,jdbcType=VARCHAR},
+      balance_id = #{balanceId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      fund_direction = #{fundDirection,jdbcType=TINYINT},
+      allow_sett = #{allowSett,jdbcType=TINYINT},
+      complete_sett = #{completeSett,jdbcType=TINYINT},
+      trx_type = #{trxType,jdbcType=TINYINT},
+      risk_time = #{riskTime,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.WebsiteAccountPriceMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.WebsiteAccountPrice">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="website_type" jdbcType="INTEGER" property="websiteType" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="rent_price" jdbcType="VARCHAR" property="rentPrice" />
+    <result column="own_price" jdbcType="VARCHAR" property="ownPrice" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, website_type, status, rent_price, own_price, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from website_account_price
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from website_account_price
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccountPrice">
+    insert into website_account_price (id, website_type, status, 
+      rent_price, own_price, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{websiteType,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{rentPrice,jdbcType=VARCHAR}, #{ownPrice,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccountPrice">
+    insert into website_account_price
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="websiteType != null">
+        website_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="rentPrice != null">
+        rent_price,
+      </if>
+      <if test="ownPrice != null">
+        own_price,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="websiteType != null">
+        #{websiteType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rentPrice != null">
+        #{rentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="ownPrice != null">
+        #{ownPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccountPrice">
+    update website_account_price
+    <set>
+      <if test="websiteType != null">
+        website_type = #{websiteType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rentPrice != null">
+        rent_price = #{rentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="ownPrice != null">
+        own_price = #{ownPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccountPrice">
+    update website_account_price
+    set website_type = #{websiteType,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      rent_price = #{rentPrice,jdbcType=VARCHAR},
+      own_price = #{ownPrice,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

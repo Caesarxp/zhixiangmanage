@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.SplitRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.SplitRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="from_user_balance_id" jdbcType="INTEGER" property="fromUserBalanceId" />
+    <result column="split_user_balance_id" jdbcType="INTEGER" property="splitUserBalanceId" />
+    <result column="order_amount" jdbcType="INTEGER" property="orderAmount" />
+    <result column="pay_amount" jdbcType="INTEGER" property="payAmount" />
+    <result column="splite_amount" jdbcType="INTEGER" property="spliteAmount" />
+    <result column="split_status" jdbcType="TINYINT" property="splitStatus" />
+    <result column="trx_type" jdbcType="TINYINT" property="trxType" />
+    <result column="split_success_time" jdbcType="TIMESTAMP" property="splitSuccessTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, from_user_balance_id, split_user_balance_id, order_amount, pay_amount, splite_amount, 
+    split_status, trx_type, split_success_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from split_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from split_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.SplitRecord">
+    insert into split_record (id, from_user_balance_id, split_user_balance_id, 
+      order_amount, pay_amount, splite_amount, 
+      split_status, trx_type, split_success_time, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{fromUserBalanceId,jdbcType=INTEGER}, #{splitUserBalanceId,jdbcType=INTEGER}, 
+      #{orderAmount,jdbcType=INTEGER}, #{payAmount,jdbcType=INTEGER}, #{spliteAmount,jdbcType=INTEGER}, 
+      #{splitStatus,jdbcType=TINYINT}, #{trxType,jdbcType=TINYINT}, #{splitSuccessTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.SplitRecord">
+    insert into split_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fromUserBalanceId != null">
+        from_user_balance_id,
+      </if>
+      <if test="splitUserBalanceId != null">
+        split_user_balance_id,
+      </if>
+      <if test="orderAmount != null">
+        order_amount,
+      </if>
+      <if test="payAmount != null">
+        pay_amount,
+      </if>
+      <if test="spliteAmount != null">
+        splite_amount,
+      </if>
+      <if test="splitStatus != null">
+        split_status,
+      </if>
+      <if test="trxType != null">
+        trx_type,
+      </if>
+      <if test="splitSuccessTime != null">
+        split_success_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserBalanceId != null">
+        #{fromUserBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="splitUserBalanceId != null">
+        #{splitUserBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="payAmount != null">
+        #{payAmount,jdbcType=INTEGER},
+      </if>
+      <if test="spliteAmount != null">
+        #{spliteAmount,jdbcType=INTEGER},
+      </if>
+      <if test="splitStatus != null">
+        #{splitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="trxType != null">
+        #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="splitSuccessTime != null">
+        #{splitSuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.SplitRecord">
+    update split_record
+    <set>
+      <if test="fromUserBalanceId != null">
+        from_user_balance_id = #{fromUserBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="splitUserBalanceId != null">
+        split_user_balance_id = #{splitUserBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmount != null">
+        order_amount = #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="payAmount != null">
+        pay_amount = #{payAmount,jdbcType=INTEGER},
+      </if>
+      <if test="spliteAmount != null">
+        splite_amount = #{spliteAmount,jdbcType=INTEGER},
+      </if>
+      <if test="splitStatus != null">
+        split_status = #{splitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="trxType != null">
+        trx_type = #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="splitSuccessTime != null">
+        split_success_time = #{splitSuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.SplitRecord">
+    update split_record
+    set from_user_balance_id = #{fromUserBalanceId,jdbcType=INTEGER},
+      split_user_balance_id = #{splitUserBalanceId,jdbcType=INTEGER},
+      order_amount = #{orderAmount,jdbcType=INTEGER},
+      pay_amount = #{payAmount,jdbcType=INTEGER},
+      splite_amount = #{spliteAmount,jdbcType=INTEGER},
+      split_status = #{splitStatus,jdbcType=TINYINT},
+      trx_type = #{trxType,jdbcType=TINYINT},
+      split_success_time = #{splitSuccessTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.WebsiteAccountMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.WebsiteAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="register_config_id" jdbcType="INTEGER" property="registerConfigId" />
+    <result column="website_type" jdbcType="TINYINT" property="websiteType" />
+    <result column="current_psd" jdbcType="VARCHAR" property="currentPsd" />
+    <result column="origin_psd" jdbcType="VARCHAR" property="originPsd" />
+    <result column="account_status" jdbcType="TINYINT" property="accountStatus" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="vip_begin_date" jdbcType="TIMESTAMP" property="vipBeginDate" />
+    <result column="vip_end_date" jdbcType="TIMESTAMP" property="vipEndDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="used_num" jdbcType="INTEGER" property="usedNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, register_config_id, website_type, current_psd, origin_psd, account_status, status, 
+    vip_begin_date, vip_end_date, create_time, update_time, used_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from website_account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from website_account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccount">
+    insert into website_account (id, register_config_id, website_type, 
+      current_psd, origin_psd, account_status, 
+      status, vip_begin_date, vip_end_date, 
+      create_time, update_time, used_num
+      )
+    values (#{id,jdbcType=INTEGER}, #{registerConfigId,jdbcType=INTEGER}, #{websiteType,jdbcType=TINYINT}, 
+      #{currentPsd,jdbcType=VARCHAR}, #{originPsd,jdbcType=VARCHAR}, #{accountStatus,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{vipBeginDate,jdbcType=TIMESTAMP}, #{vipEndDate,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{usedNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccount">
+    insert into website_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="registerConfigId != null">
+        register_config_id,
+      </if>
+      <if test="websiteType != null">
+        website_type,
+      </if>
+      <if test="currentPsd != null">
+        current_psd,
+      </if>
+      <if test="originPsd != null">
+        origin_psd,
+      </if>
+      <if test="accountStatus != null">
+        account_status,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="vipBeginDate != null">
+        vip_begin_date,
+      </if>
+      <if test="vipEndDate != null">
+        vip_end_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="usedNum != null">
+        used_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="registerConfigId != null">
+        #{registerConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="websiteType != null">
+        #{websiteType,jdbcType=TINYINT},
+      </if>
+      <if test="currentPsd != null">
+        #{currentPsd,jdbcType=VARCHAR},
+      </if>
+      <if test="originPsd != null">
+        #{originPsd,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatus != null">
+        #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="vipBeginDate != null">
+        #{vipBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipEndDate != null">
+        #{vipEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedNum != null">
+        #{usedNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccount">
+    update website_account
+    <set>
+      <if test="registerConfigId != null">
+        register_config_id = #{registerConfigId,jdbcType=INTEGER},
+      </if>
+      <if test="websiteType != null">
+        website_type = #{websiteType,jdbcType=TINYINT},
+      </if>
+      <if test="currentPsd != null">
+        current_psd = #{currentPsd,jdbcType=VARCHAR},
+      </if>
+      <if test="originPsd != null">
+        origin_psd = #{originPsd,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatus != null">
+        account_status = #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="vipBeginDate != null">
+        vip_begin_date = #{vipBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipEndDate != null">
+        vip_end_date = #{vipEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usedNum != null">
+        used_num = #{usedNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.WebsiteAccount">
+    update website_account
+    set register_config_id = #{registerConfigId,jdbcType=INTEGER},
+      website_type = #{websiteType,jdbcType=TINYINT},
+      current_psd = #{currentPsd,jdbcType=VARCHAR},
+      origin_psd = #{originPsd,jdbcType=VARCHAR},
+      account_status = #{accountStatus,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      vip_begin_date = #{vipBeginDate,jdbcType=TIMESTAMP},
+      vip_end_date = #{vipEndDate,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      used_num = #{usedNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

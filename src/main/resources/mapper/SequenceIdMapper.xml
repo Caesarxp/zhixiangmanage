@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.SequenceIdMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.SequenceId">
+    <id column="id_times" jdbcType="BIGINT" property="idTimes" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_times, ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sequence_id
+    where id_times = #{idTimes,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sequence_id
+    where id_times = #{idTimes,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.SequenceId">
+    insert into sequence_id (id_times, ip)
+    values (#{idTimes,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.SequenceId">
+    insert into sequence_id
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idTimes != null">
+        id_times,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idTimes != null">
+        #{idTimes,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.SequenceId">
+    update sequence_id
+    <set>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_times = #{idTimes,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.SequenceId">
+    update sequence_id
+    set ip = #{ip,jdbcType=VARCHAR}
+    where id_times = #{idTimes,jdbcType=BIGINT}
+  </update>
+</mapper>

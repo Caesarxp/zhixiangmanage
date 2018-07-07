@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixiang.zhixiangmanage.mapper.PaymentRecordMapper">
+  <resultMap id="BaseResultMap" type="com.zhixiang.zhixiangmanage.po.PaymentRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="user_balance_id" jdbcType="INTEGER" property="userBalanceId" />
+    <result column="receiver_account_type" jdbcType="TINYINT" property="receiverAccountType" />
+    <result column="payer_balance_id" jdbcType="INTEGER" property="payerBalanceId" />
+    <result column="payer_account_type" jdbcType="TINYINT" property="payerAccountType" />
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
+    <result column="payer_fee" jdbcType="DECIMAL" property="payerFee" />
+    <result column="payer_pay_amount" jdbcType="DECIMAL" property="payerPayAmount" />
+    <result column="receiver_fee" jdbcType="DECIMAL" property="receiverFee" />
+    <result column="receiver_post_amount" jdbcType="DECIMAL" property="receiverPostAmount" />
+    <result column="plat_income" jdbcType="DECIMAL" property="platIncome" />
+    <result column="biz_type" jdbcType="INTEGER" property="bizType" />
+    <result column="trx_type" jdbcType="TINYINT" property="trxType" />
+    <result column="payment_type" jdbcType="TINYINT" property="paymentType" />
+    <result column="risk_time" jdbcType="INTEGER" property="riskTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="order_from" jdbcType="TINYINT" property="orderFrom" />
+    <result column="product" jdbcType="VARCHAR" property="product" />
+    <result column="frp_code" jdbcType="VARCHAR" property="frpCode" />
+    <result column="pay_success_time" jdbcType="TIMESTAMP" property="paySuccessTime" />
+    <result column="complete_time" jdbcType="TIMESTAMP" property="completeTime" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, trade_no, user_balance_id, receiver_account_type, payer_balance_id, 
+    payer_account_type, total_amount, payer_fee, payer_pay_amount, receiver_fee, receiver_post_amount, 
+    plat_income, biz_type, trx_type, payment_type, risk_time, status, order_from, product, 
+    frp_code, pay_success_time, complete_time, cancel_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from payment_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhixiang.zhixiangmanage.po.PaymentRecord">
+    insert into payment_record (id, order_no, trade_no, 
+      user_balance_id, receiver_account_type, payer_balance_id, 
+      payer_account_type, total_amount, payer_fee, 
+      payer_pay_amount, receiver_fee, receiver_post_amount, 
+      plat_income, biz_type, trx_type, 
+      payment_type, risk_time, status, 
+      order_from, product, frp_code, 
+      pay_success_time, complete_time, cancel_time, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{userBalanceId,jdbcType=INTEGER}, #{receiverAccountType,jdbcType=TINYINT}, #{payerBalanceId,jdbcType=INTEGER}, 
+      #{payerAccountType,jdbcType=TINYINT}, #{totalAmount,jdbcType=DECIMAL}, #{payerFee,jdbcType=DECIMAL}, 
+      #{payerPayAmount,jdbcType=DECIMAL}, #{receiverFee,jdbcType=DECIMAL}, #{receiverPostAmount,jdbcType=DECIMAL}, 
+      #{platIncome,jdbcType=DECIMAL}, #{bizType,jdbcType=INTEGER}, #{trxType,jdbcType=TINYINT}, 
+      #{paymentType,jdbcType=TINYINT}, #{riskTime,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{orderFrom,jdbcType=TINYINT}, #{product,jdbcType=VARCHAR}, #{frpCode,jdbcType=VARCHAR}, 
+      #{paySuccessTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}, #{cancelTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhixiang.zhixiangmanage.po.PaymentRecord">
+    insert into payment_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="userBalanceId != null">
+        user_balance_id,
+      </if>
+      <if test="receiverAccountType != null">
+        receiver_account_type,
+      </if>
+      <if test="payerBalanceId != null">
+        payer_balance_id,
+      </if>
+      <if test="payerAccountType != null">
+        payer_account_type,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="payerFee != null">
+        payer_fee,
+      </if>
+      <if test="payerPayAmount != null">
+        payer_pay_amount,
+      </if>
+      <if test="receiverFee != null">
+        receiver_fee,
+      </if>
+      <if test="receiverPostAmount != null">
+        receiver_post_amount,
+      </if>
+      <if test="platIncome != null">
+        plat_income,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="trxType != null">
+        trx_type,
+      </if>
+      <if test="paymentType != null">
+        payment_type,
+      </if>
+      <if test="riskTime != null">
+        risk_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="orderFrom != null">
+        order_from,
+      </if>
+      <if test="product != null">
+        product,
+      </if>
+      <if test="frpCode != null">
+        frp_code,
+      </if>
+      <if test="paySuccessTime != null">
+        pay_success_time,
+      </if>
+      <if test="completeTime != null">
+        complete_time,
+      </if>
+      <if test="cancelTime != null">
+        cancel_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalanceId != null">
+        #{userBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverAccountType != null">
+        #{receiverAccountType,jdbcType=TINYINT},
+      </if>
+      <if test="payerBalanceId != null">
+        #{payerBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="payerAccountType != null">
+        #{payerAccountType,jdbcType=TINYINT},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerFee != null">
+        #{payerFee,jdbcType=DECIMAL},
+      </if>
+      <if test="payerPayAmount != null">
+        #{payerPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverFee != null">
+        #{receiverFee,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverPostAmount != null">
+        #{receiverPostAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="platIncome != null">
+        #{platIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="trxType != null">
+        #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="paymentType != null">
+        #{paymentType,jdbcType=TINYINT},
+      </if>
+      <if test="riskTime != null">
+        #{riskTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="orderFrom != null">
+        #{orderFrom,jdbcType=TINYINT},
+      </if>
+      <if test="product != null">
+        #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="frpCode != null">
+        #{frpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paySuccessTime != null">
+        #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhixiang.zhixiangmanage.po.PaymentRecord">
+    update payment_record
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalanceId != null">
+        user_balance_id = #{userBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverAccountType != null">
+        receiver_account_type = #{receiverAccountType,jdbcType=TINYINT},
+      </if>
+      <if test="payerBalanceId != null">
+        payer_balance_id = #{payerBalanceId,jdbcType=INTEGER},
+      </if>
+      <if test="payerAccountType != null">
+        payer_account_type = #{payerAccountType,jdbcType=TINYINT},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payerFee != null">
+        payer_fee = #{payerFee,jdbcType=DECIMAL},
+      </if>
+      <if test="payerPayAmount != null">
+        payer_pay_amount = #{payerPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverFee != null">
+        receiver_fee = #{receiverFee,jdbcType=DECIMAL},
+      </if>
+      <if test="receiverPostAmount != null">
+        receiver_post_amount = #{receiverPostAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="platIncome != null">
+        plat_income = #{platIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="trxType != null">
+        trx_type = #{trxType,jdbcType=TINYINT},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=TINYINT},
+      </if>
+      <if test="riskTime != null">
+        risk_time = #{riskTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="orderFrom != null">
+        order_from = #{orderFrom,jdbcType=TINYINT},
+      </if>
+      <if test="product != null">
+        product = #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="frpCode != null">
+        frp_code = #{frpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paySuccessTime != null">
+        pay_success_time = #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null">
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhixiang.zhixiangmanage.po.PaymentRecord">
+    update payment_record
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      user_balance_id = #{userBalanceId,jdbcType=INTEGER},
+      receiver_account_type = #{receiverAccountType,jdbcType=TINYINT},
+      payer_balance_id = #{payerBalanceId,jdbcType=INTEGER},
+      payer_account_type = #{payerAccountType,jdbcType=TINYINT},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      payer_fee = #{payerFee,jdbcType=DECIMAL},
+      payer_pay_amount = #{payerPayAmount,jdbcType=DECIMAL},
+      receiver_fee = #{receiverFee,jdbcType=DECIMAL},
+      receiver_post_amount = #{receiverPostAmount,jdbcType=DECIMAL},
+      plat_income = #{platIncome,jdbcType=DECIMAL},
+      biz_type = #{bizType,jdbcType=INTEGER},
+      trx_type = #{trxType,jdbcType=TINYINT},
+      payment_type = #{paymentType,jdbcType=TINYINT},
+      risk_time = #{riskTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      order_from = #{orderFrom,jdbcType=TINYINT},
+      product = #{product,jdbcType=VARCHAR},
+      frp_code = #{frpCode,jdbcType=VARCHAR},
+      pay_success_time = #{paySuccessTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
